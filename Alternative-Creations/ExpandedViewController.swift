@@ -26,6 +26,12 @@ class ExpandedViewController: UIViewController {
         descriptionLabel.text = art?.desc
 
     }
+    
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        get {
+            return .portrait
+        }
+    }
 
     @IBAction func backButton(_ sender: Any) {
         

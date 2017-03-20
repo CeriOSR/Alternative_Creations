@@ -76,6 +76,12 @@ class ArtCollectionController: UICollectionViewController, UICollectionViewDeleg
         }
     }
     
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        get {
+            return .portrait
+        }
+    }
+    
     @IBAction func backBarButton(_ sender: Any) {
         
         performSegue(withIdentifier: "backToArtistCollectionSegue", sender: self)

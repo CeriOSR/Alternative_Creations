@@ -32,6 +32,12 @@ class PostArtController: UIViewController, UIImagePickerControllerDelegate, UINa
         
     }
     
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        get {
+            return .portrait
+        }
+    }
+    
     @IBAction func logoutButton(_ sender: Any) {
         handleLogout()
     }

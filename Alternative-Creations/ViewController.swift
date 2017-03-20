@@ -28,6 +28,12 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         tabBarController?.tabBar.isHidden = true
     }
     
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        get {
+            return .portrait
+        }
+    }
+    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil {
             print("Could not continue with Facebook!", error)

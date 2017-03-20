@@ -33,3 +33,88 @@ extension UIImageView {
         }
     }
 }
+
+//manage rotation of navigation controller
+extension UINavigationController {
+    
+    override open var shouldAutorotate: Bool {
+        get {
+            if let visibleVC = visibleViewController {
+                return visibleVC.shouldAutorotate
+            }
+            return super.shouldAutorotate
+        }
+    }
+    
+    override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+        get {
+            if let visibleVC = visibleViewController {
+                return visibleVC.preferredInterfaceOrientationForPresentation
+            }
+            return super.preferredInterfaceOrientationForPresentation
+        }
+    }
+    
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        get {
+            if let visibleVC = visibleViewController {
+                return visibleVC.supportedInterfaceOrientations
+            }
+            return super.supportedInterfaceOrientations
+        }
+    }}
+
+//set the rotatation of tab controller
+extension UITabBarController {
+    
+    override open var shouldAutorotate: Bool {
+        get {
+            if let selectedVC = selectedViewController{
+                return selectedVC.shouldAutorotate
+            }
+            return super.shouldAutorotate
+        }
+    }
+    
+    override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+        get {
+            if let selectedVC = selectedViewController{
+                return selectedVC.preferredInterfaceOrientationForPresentation
+            }
+            return super.preferredInterfaceOrientationForPresentation
+        }
+    }
+    
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        get {
+            if let selectedVC = selectedViewController{
+                return selectedVC.supportedInterfaceOrientations
+            }
+            return super.supportedInterfaceOrientations
+        }
+    }}
+
+//Lock to Specific Orientation
+//
+//class YourViewController: UIViewController {
+//    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+//        get {
+//            return .portrait
+//        }
+//    }}
+//Disable Rotation
+//
+//class YourViewController: UIViewController {
+//    open override var shouldAutorotate: Bool {
+//        get {
+//            return false
+//        }
+//    }}
+//Change Preferred Interface Orientation For Presentation
+//
+//class YourViewController: UIViewController {
+//    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+//        get {
+//            return .portrait
+//        }
+//    }}

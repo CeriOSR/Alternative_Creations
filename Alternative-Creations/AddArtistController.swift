@@ -25,6 +25,12 @@ class AddArtistController: UIViewController, UIImagePickerControllerDelegate, UI
         avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectArtistImage)))
     }
     
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        get {
+            return .portrait
+        }
+    }
+    
     @IBAction func addArtistButton(_ sender: UIBarButtonItem) {
         //handleSubmitArtistImageToStorage()
         let storageImageName = NSUUID().uuidString

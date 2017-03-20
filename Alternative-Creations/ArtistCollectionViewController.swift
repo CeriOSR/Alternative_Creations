@@ -20,8 +20,14 @@ class ArtistCollectionViewController: UICollectionViewController, UICollectionVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkIfUserExist()
         navigationController?.navigationBar.isHidden = false
-        tabBarController?.tabBar.isHidden = false
+        if FIRAuth.auth()?.currentUser?.email == "ceriosrey@gmail.com" {
+            tabBarController?.tabBar.isHidden = false
+        } else {
+            tabBarController?.tabBar.isHidden = true
+        }
+        
         fetchArtist()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         //switch the scroll direction of a UICollectionView Controller
@@ -62,6 +68,19 @@ class ArtistCollectionViewController: UICollectionViewController, UICollectionVi
             //use this if using segues to pass data instead of the commented one.
             let artCollectionController = segue.destination as! ArtCollectionController
             artCollectionController.artist = selectedArtist
+        }
+    }
+    
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        get {
+            return .portrait
+        }
+    }
+    
+    func checkIfUserExist(){
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        if uid == nil {
+            handleLogout()
         }
     }
     
